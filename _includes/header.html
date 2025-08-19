@@ -1,0 +1,52 @@
+
+<header class="top-bar">
+    <div class="header-left">
+        <div class="category-dropdown">
+            <h2 class="category">Journal</h2>
+            <div class="dropdown-content">
+                {% assign filtered_posts = site.posts | where: 'category', 'journal' %}
+                {% assign posts_by_year = filtered_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+                {% assign years = posts_by_year | map: "name" %}
+                {% for year in years %}
+                    <a href="/categories/journal.html#{{ year }}">{{ year }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="category-dropdown ">
+            <h2 onclick="location.href='/albumhome.html'"  class="category">Music</h2>
+            <div class="dropdown-content fixer">
+                {% assign filtered_posts = site.posts | where: 'category', 'albums' %}
+                {% assign posts_by_year = filtered_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+                {% assign years = posts_by_year | map: "name" %}
+                {% for year in years %}
+                    <a href="/categories/albums.html#{{ year }}">{{ year }}</a>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+    <div class="header-middle">
+        <h1 onclick="location.href='/index.html'" class="title">Sylpheia</h1>
+    </div>
+    <div class="header-right">
+        <div class="category-dropdown">
+            <h2 onclick="location.href='/Dreams/dreams.html'" class="category">Dreams</h2>
+            <div class="dropdown-content">
+                {% assign filtered_posts = site.posts | where: 'category', 'dreams' %}
+                {% assign posts_by_year = filtered_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+                {% assign years = posts_by_year | map: "name" %}
+                {% for year in years %}
+                    <a href="/categories/dreams.html#{{ year }}">{{ year }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="category-dropdown">
+            <h2 class="category">Calendar</h2>
+        </div>
+        
+    </div>
+
+    
+    <!-- Silly random header bg -->
+    <script src="/assets/js/randomimage.js"></script>
+</header>

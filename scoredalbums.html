@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<div class="scoredgrid">
+    {% assign filtered_posts = site.posts | where: 'category', "albums" %}
+    {% assign sorted_posts = filtered_posts | sort: 'score' | reverse %}
+    {% for post in sorted_posts %}
+        <a href="{{ post.url }}" class="gridelement">  
+            {% if post.thumbart %}
+                <img src="https://ik.imagekit.io/Sylpheia/tr:h-200/thumbart/{{ post.thumbart }}" class="thumbartlocal">
+            {% elsif post.albumart %}
+                <img src="https://ik.imagekit.io/Sylpheia/tr:h-200/albumart/{{ post.albumart }}" class="thumbartlocal">
+            {% else %}
+                <img class="album-thumb" data-artist="{{ post.artist }}" data-album="{{ post.title }}">
+            {% endif %}
+            <!-- <span class="besttext"><span class="albumtitle">{{ post.title }}</span> - {{ post.artist }} - <span class="number">{{ post.score }}</span></span> -->
+            <!-- <span class="thumbscore">{{ post.score }}</span> -->
+        </a>
+    {% endfor %}
+
+    <script src="/assets/js/MBimage.js"></script>
+</div>

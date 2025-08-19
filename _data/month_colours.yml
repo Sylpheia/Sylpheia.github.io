@@ -1,0 +1,30 @@
+
+#.aasdff {
+    #color:#beffe9;
+    #color:#8fff95;
+    #color:#3385ff;
+    #color:#ffe923;
+    #color:#ff7d32;
+    #color:#ff77cb;
+    #color:#e415ff;
+    #color:#ffab4a;
+    #color:#3425ff;
+    #color:#ffad15;
+    #color:#135513;
+    #color:#130d5c;
+#}
+
+
+January: "#9bfbff"
+February: "#8fff95"
+March: "#3385ff"
+April: "#ffe923"
+May: "#ff7d32"
+June: "#ff77cb"
+July: "#e415ff"
+August: "#ffab4a"
+September: "#3425ff"
+October: "#ffad15"
+November: "#135513"
+December: "#130d5c"
+

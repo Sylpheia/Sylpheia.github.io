@@ -1,0 +1,62 @@
+---
+layout: default
+bg: ohana.jpg
+---
+
+
+<div>
+    <h1>Album Reviews</h1>
+    <div class="reviewgrid">
+        {% assign filtered_posts = site.posts | where: 'category', "albums" %}
+        <div>
+            <h2 class="reviewgridheader"> Editor's Choice</h2>
+            <ul>
+                {% for post in filtered_posts %}
+                    {% if post.editorschoice %}
+                        <li><a href="{{ post.url }}"> <span class="albumtitle">{{ post.title }}</span> - {{ post.artist }} </a></li>
+                    {% endif %}
+                {% endfor%}
+            </ul>
+        </div>
+        <div>
+            <h2 class="reviewgridheader">Best albums</h2>
+            <div class="bestgrid">
+                {% assign sorted_posts = filtered_posts | sort: 'score' | reverse %}
+                {% for post in sorted_posts %}
+                    {% if post.score > 7.9 %}
+                        <a href="{{ post.url }}" class="gridelement">  
+                            <!-- Try to get thumbnails from imagekit -->
+                            {% if post.thumbart %}
+                                <img src="https://ik.imagekit.io/Sylpheia/thumbart//{{ post.thumbart }}" class="thumbartlocal">
+                            {% elsif post.albumart %}
+                                <img src="https://ik.imagekit.io/Sylpheia/albumart/{{ post.albumart }}" class="thumbartlocal">
+                            {% else %}
+                            <!-- If all else fails, get it from music brains -->
+                                <img class="album-thumb" data-artist="{{ post.artist }}" data-album="{{ post.title }}">
+                            {% endif %}
+                            <!-- <span class="besttext"><span class="albumtitle">{{ post.title }}</span> - {{ post.artist }} - <span class="number">{{ post.score }}</span></span> -->
+                            <span class="thumbscore">{{ post.score }}</span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <a href="/scoredalbums.html" class="seemore">Click here for the full set of scores</a>
+        </div>
+        <div>
+            <h2 class="reviewgridheader">Most recent reviews</h2>
+            <div class="recentcontainer">
+                <ul>
+                    {% assign chrono_posts = filtered_posts | sort: 'date' | reverse %}
+                    {% for post in chrono_posts limit:20 %}
+                            <li><a href="{{ post.url }}"> {{ post.date | date: "%d.%m.%y" }} - <span class="albumtitle">{{ post.title }}</span> - {{ post.artist }}</a></li>
+                    {% endfor %}
+                </ul>
+                <a href="/categories/albums.html" class="seemore">Click here for the full collection of reviews</a>
+            </div>
+        </div>
+        <script src="/assets/js/ratingcolour.js"></script>
+        <script src="assets/js/MBimage.js"></script>
+
+    </div>
+</div>
+

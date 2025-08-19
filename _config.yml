@@ -1,0 +1,39 @@
+collections:
+  categories:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "categories"
+    values: 
+      layout: "category"
+  - scope:
+      path: "_posts/albums"
+      type: "posts"
+    values:
+      layout: "album"
+      category: "albums"
+  - scope:
+      path: "_posts/dreams"
+      type: "posts"
+    values:
+      layout: "dream"
+      category: "dreams"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+
+# if any of the other categories gain their own layouts, add them above in the same way as albums
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap

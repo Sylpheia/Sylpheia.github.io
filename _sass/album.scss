@@ -1,0 +1,115 @@
+.albumreview {
+    display:flex;
+    justify-content: center;
+    margin: -20px;
+    margin-top: 0px;
+}
+
+.sidebar,
+.aside {
+    width: 25vw;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: space-around;
+}
+
+.albumartlocal,
+.album-cover {
+    width: 80%;
+    border: 2px solid rgb(235, 203, 136);
+    margin: 20px auto;
+}
+
+.albumdetails {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: space-between;
+    row-gap: 10px;
+}
+
+.gridrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.artist {
+    font-size: 1.25rem;
+}
+
+.albumname {
+    font-size: 1.35rem;
+    font-weight: bold;
+}
+
+
+
+.albumtext {
+    padding: 10px;
+    width: 40vw;
+    border-left: 2px solid rgb(235, 203, 136);
+    border-right: 2px solid rgb(235, 203, 136);
+    text-align: justify;
+    font-size: 1.25rem;
+}
+
+.scorebox {
+    display: flex;
+    align-items: center;
+    line-height: 1rem;
+    justify-content: space-between;
+}
+
+.score {
+    display: inline-flex;
+    font-size: 3.5rem;  
+    background-color: rgb(19, 4, 10);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-2px);
+    z-index: 2;
+}
+
+.textoffset {
+    transform: translateY(-2px);
+}
+
+
+/*#region score shadow*/
+.score::before,
+.score::after  {
+    content: attr(data-score); /* Gets the number from a data attribute */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.score::before {
+    font-size: 3rem;
+    filter: blur(1px) brightness(0.75) saturate(0.75) hue-rotate(10deg);
+    z-index: -1;
+}
+
+.score::after {
+    font-size: 2.6rem;
+    filter: blur(2px) brightness(0.5) saturate(0.5) hue-rotate(30deg);
+    z-index: -2;
+}
+
+.score::after::after {
+    font-size: 2.2rem;
+    filter: blur(3px) brightness(0.35) saturate(0.4) hue-rotate(45deg);
+    top: 70%;
+    z-index: -3;
+}
+
+/*#endregion*/

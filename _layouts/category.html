@@ -1,0 +1,45 @@
+---
+layout: default
+---
+<div class="categorycontent">
+  
+  <div class="catdesc">
+    <h1 >{{ page.name }} </h1>
+    {{ content }}
+  </div>
+  <div class="yearcolumn">
+    <!--For all posts, which have a 'category' variable which is the same as current page's shortname-->
+    {% assign filtered_posts = site.posts | where: 'category', page.shortname %}
+    {% assign posts_by_year = filtered_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    <!--For each year:-->
+    {% for year in posts_by_year %}
+      <div class="yeargrid">
+        <h2 id="{{ year.name }}">{{ year.name }}</h2>
+        {% assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%B'"  %}
+        <div class="monthgrid">
+          {% for month in posts_by_month %}
+            {% assign color = site.data.month_colours[month.name]%}
+            <div class="monthcell" style= "border-color: {{ color }}; color: {{ color }}">
+              <h3 class="monthname">{{ month.name }}</h3>
+              <ul class="monthlist">
+                {% for post in month.items reversed %}
+                    <li><a href="{{ post.url }}" class="catentry"><span  class="day">{{ post.date | date: "%d"}}</span> - <span class="posttitle">{{ post.title }} </span>
+                      <!--For albums, post the artist-->
+                      {% if post.artist %}
+                        - {{ post.artist }}
+                      {% endif %}
+                      <!--For dreams, is there a subcategory (emoji)-->
+                      {% if post.subcat %}
+                        {{ post.subcat }}
+                      {% endif %}
+                    </a></li>
+                {% endfor %}
+              </ul> 
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>

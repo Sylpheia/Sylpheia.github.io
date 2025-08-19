@@ -1,0 +1,51 @@
+---
+layout: post
+---
+<div class="albumreview">
+
+    
+
+    <div class="sidebar">
+        {% if page.albumart %}
+            <img src="https://ik.imagekit.io/Sylpheia/albumart/{{ page.albumart }}" class="albumartlocal" >
+            <img class="album-cover" {% if page.mbid %}data-mbid="{{ page.mbid }}"{% endif %} style="display: none;">
+        {% elsif page.mbid %}
+            <img class="album-cover" data-mbid="{{ page.mbid }}">
+        {% else %}
+            <img class="album-cover" data-artist="{{ page.artist }}" data-album="{{ page.title }}">
+        {% endif %}
+        <div class="albumdetails">
+            <div class="gridrow">
+                <span class="albumname">{{ page.title }} </span> 
+                <span class="artist">{{ page.artist }}</span>  
+            </div>
+            <div class="gridrow">
+                {% if page.releasedate %}
+                    <span >{{ page.releasedate | date: "%B %Y" }}</span>
+                {% else %}
+                    <span class="releasedate"></span> 
+                {% endif %}
+                <span class="genre"> {{ page.genre }}</span>
+            </div>
+        </div>
+        
+        <div class="scorebox">
+            <div class="parts">
+                {% if page.vocalscore > -1 %}
+                    <h3> Vocals: {{ page.vocalscore }}</h3>
+                {% endif %}
+                <h3> Instrumental: {{ page.instrumentalscore }}</h3>
+            </div>
+            <h1 class="number score" data-score="{{ page.score }}"><span class="textoffset">{{ page.score }}</span></h1>
+        </div>
+        <script src="/assets/js/ratingcolour.js"></script>
+
+            
+    </div>
+    <script src="/assets/js/MBimage.js"></script>
+    <div class="albumtext">
+        {{ content }}
+    </div>
+    <div class="aside"></div>
+    
+</div>

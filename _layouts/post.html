@@ -1,0 +1,91 @@
+---
+layout: default
+---
+<!--Everything that's part of the post-->
+<div class="postmain">
+    <!--Stuff in every post - title, date, arrows-->
+    <div class="postexclusive">
+        <div class="hideliquid">
+            <!-- Filter posts by category -->
+            {% assign likeposts = site.posts | where: 'category', page.category %}
+            <!-- Sort by title first, then date for stable ordering -->
+            {% assign sortedposts = likeposts | sort: 'title' | sort: 'date' %}
+
+            <!-- Find index of current page in sorted list -->
+            {% assign current_index = nil %}
+            {% for post in sortedposts %}
+                {% if post.url == page.url %}
+                    {% assign current_index = forloop.index0 %}
+                {% endif %}
+            {% endfor %}
+
+            <!-- Initialize previous and next post -->
+            {% assign previouspost = nil %}
+            {% assign nextpost = nil %}
+
+            <!-- Get previous post by index -->
+            {% if current_index > 0 %}
+                {% assign previous_index = current_index | minus: 1 %}
+                {% for post in sortedposts %}
+                    {% if forloop.index0 == previous_index %}
+                        {% assign previouspost = post %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <!-- Get next post by index -->
+            {% assign next_index = current_index | plus: 1 %}
+            {% if next_index < sortedposts.size %}
+                {% for post in sortedposts %}
+                    {% if forloop.index0 == next_index %}
+                        {% assign nextpost = post %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="leftarrow">
+            {% if previouspost %}
+                <a href="{{ previouspost.url }}" class="back">
+                    <h2 class="arrow">←</h2>
+                    <div>
+                        <p>{{ previouspost.title }}</p> 
+                        <p>{{ previouspost.date | date_to_string }}</p>  
+                    </div>
+                </a>
+            {% endif %}
+        </div>
+        <div class="postmiddle">
+            <div><h1>
+                {% if page.displaytitle %} 
+                    {{page.displaytitle}} 
+                {% else %} 
+                    {{ page.title }}  
+                {% endif %}
+            </h1></div>
+            <p>
+                {{ page.date | date_to_string }} 
+                <!--find the category which has the same shortname as the page's category variable-->
+                {% assign category = site.categories | where: 'shortname', page.category | first %}
+                {% if category %}
+                    - <a href="{{ category.url }}" class="deadlink">{{ category.name }}</a>
+                {% endif %}
+            </p>
+        </div>
+        <div class="rightarrow">
+            {% if nextpost %}
+                <a href=" {{ nextpost.url }}" class="next">
+                    <div>
+                        <p>{{ nextpost.title}}</p>
+                        <p>{{ nextpost.date | date_to_string }}</p>
+                    </div>
+                    <h2 class="arrow">→</h2>
+                    
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <!--Specifics of this very post-->
+    <div class="postcontent">
+        {{ content }}
+    </div>
+</div>

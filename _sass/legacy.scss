@@ -1,0 +1,67 @@
+
+
+/* #region global styles */
+
+.container {
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(238, 150, 150, 0.8);
+    max-width: 70vw;
+    min-width: 800px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 24px;
+    height: calc(100vh - 100px);
+    border: white solid 2px;
+}
+/* #endregion */
+
+
+/* #region Dream styles */
+
+.dreambody {
+    background: url("dream.jpg"); 
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    
+}
+
+.dreamgrid { 
+    width: 100%;
+    height: 100%;
+    display: grid;
+    text-align: center;
+    z-index: 0;
+    overflow: hidden;
+    gap: 10px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+
+.year {
+    display: flex;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: rgba(238, 150, 216, 0.5);
+    border: #fff 2px solid;
+    border-radius: 24px;
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.year:hover {
+    background-color: rgb(231, 147, 210);
+    text-shadow:
+        0 0 15px #b209f5,
+        0 0 2px #edbfff,
+        0 0 5px #d15bff;
+    cursor: pointer;
+}
+
+/* #endregion */
+
