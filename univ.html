@@ -1,0 +1,69 @@
+---
+layout: default
+---
+<div class="univwrapper" >
+    <p class="univtitle">University Challenge Tracker<span class="univsub1">(Mobile)</span></p>
+    <div class="univmain">
+        <div>
+            <label for="historyInput">Paste History:</label>
+            <input type="text" id="historyInput" class="endinput">
+            <button onclick="loadHistory()">Load</button>
+        </div>
+
+        <div id="scoreboard" class="scoreboard">
+            <div class="univleft">
+                <p>Score : <span id="scoreLabel" class="univnumber">0</span></p>
+                <p>Round : <span id="roundLabel" class="univnumber">1</span></p>
+            </div>
+            <div class="univright">
+                <p>Starters : <span id="sLabel" class="univnumber">0/0</span></p>
+                <p>Bonus : <span id="bLabel" class="univnumber">0/0</span></p>
+            </div>
+            
+            
+        </div>
+
+        <div id="bonusDots">
+            <span id="dot1">●</span>
+            <span id="dot2">●</span>
+            <span id="dot3">●</span>
+        </div>
+
+        <div id="buttons" class="univbuttons">
+            <div class="univrow">
+                <button id="Sp" onclick="buttonpress(2)" class="univs univ1">S+</button>
+                <button id="Sm" onclick="buttonpress(3)" class="univs univ0">S-</button>
+                <button id="Sn" onclick="buttonpress(4)" class="univs">S♻️</button>
+                <button id="Bp" onclick="buttonpress(5)" class="univs univ1">B+</button>
+                <button id="Bm" onclick="buttonpress(6)" class="univs univ0">B-</button>
+            </div>
+            <div>
+                <button id="Picture" onclick="buttonpress(7)" class="univsp">Picture</button>
+                <button id="Music" onclick="buttonpress(8)" class="univsp">Music</button>
+            </div>
+            <div>
+                <button id="Undo" onclick="guiUndo()" class="unive">Undo</button>
+                <button id="Pause" onclick="pauseGame()" class="unive">Copy History</button>
+                <button id="Gong" onclick="endgame()" class="unive">Gong</button>
+            </div>
+            
+            
+        </div>
+    </div>
+
+
+    <div class="univendgame">
+        <p class="univsub">Endgame Inputs</p>
+        <div>
+            <label for="team1Input">Team 1:</label>
+            <input type="number" id="team1Input" class="endinput"><br>
+            <label for="team2Input">Team 2:</label>
+            <input type="number" id="team2Input" class="endinput"><br>
+            <label for="episodeInput">Episode:</label>
+            <input type="number" id="episodeInput" class="endinput"><br>
+        </div>
+    </div>
+    
+
+    <script src="/assets/js/univ.js"></script>
+</div>

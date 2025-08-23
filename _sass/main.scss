@@ -47,7 +47,7 @@ body {
     flex-direction: column;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 20px ;
-    min-height: 84vh;
+    min-height: 88vh;
 }
 
 .bgimage {
@@ -62,9 +62,12 @@ body {
     height: 100vh;
 }
 
-$z: -3px;
-$scale: 4.55;
-$y: 50vh * (2 - (-$z / ($scale * 1px)));
+$z: -5px;
+// $scale: 4.55;
+// $y: 50vh * (2 - (-$z / ($scale * 1px)));
+
+$scale: 6.5;
+$y: 0;
 
 .parabg {
     position: absolute;
@@ -72,7 +75,7 @@ $y: 50vh * (2 - (-$z / ($scale * 1px)));
     transform-style: preserve-3d;
     transform: translateZ($z) scale($scale) translateY($y);
     left: 0;
-    top: -100vh;
+    top: -10vh;
     right: 0;
     bottom: 0;
     overflow: hidden;
